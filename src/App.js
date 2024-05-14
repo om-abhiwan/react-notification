@@ -49,10 +49,20 @@ function App() {
     navigator.clipboard
       .writeText(fcmKey)
       .then(() => {
-        setCopyMessage('Text copied to clipboard!');
-        setTimeout(() => {
-          setCopyMessage('');
-        }, 1000); // Clear the message after 3 seconds
+
+
+        if(fcmKey){
+          setCopyMessage('Text copied to clipboard!');
+          setTimeout(() => {
+            setCopyMessage('');
+          }, 1000); // Clear the message after 3 seconds
+        }else{
+          console.log("test")
+        }
+
+
+
+
       })
       .catch(err => {
         console.error('Unable to copy text to clipboard:', err);
