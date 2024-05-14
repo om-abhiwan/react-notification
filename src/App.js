@@ -104,12 +104,12 @@ function App() {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            v.0 <code>src/App.js</code> and save to reload.
           </p>
 
           <p>FCM KEY :- <span id='fcmKey'>{localStorage.getItem('fcmToken')}</span>  </p>
-          <button onClick={myFunction}>Copy text</button>
-          <p>{copyMessage && <p>{copyMessage}</p>}</p>
+          {/* <button onClick={myFunction}>Copy text</button>
+          <p>{copyMessage && <p>{copyMessage}</p>}</p> */}
 
         </header>
       </div>
