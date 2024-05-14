@@ -6,6 +6,7 @@ import './App.css';
 
 function App() {
 
+  const [copyMessage, setCopyMessage] = useState('');
 
   const requestNotificationPermission = () => {
     if ('Notification' in window) {
@@ -40,25 +41,31 @@ function App() {
     requestNotificationPermission();
   }, []);
 
-  const [copyMessage, setCopyMessage] = useState('');
 
   const myFunction = () => {
     const fcmKey = document.getElementById('fcmKey').innerText;
-    navigator.clipboard
-      .writeText(fcmKey)
-      .then(() => {
-        setCopyMessage('Text copied to clipboard!');
-        setTimeout(() => {
-          setCopyMessage('');
-        }, 1000); // Clear the message after 3 seconds
-      })
-      .catch(err => {
-        console.error('Unable to copy text to clipboard:', err);
-        setCopyMessage('Failed to copy text to clipboard');
-        setTimeout(() => {
-          setCopyMessage('');
-        }, 3000); // Clear the message after 3 seconds
-      });
+
+    if (!fcmKey) {
+      
+    } else {
+      navigator.clipboard
+        .writeText(fcmKey)
+        .then(() => {
+          setCopyMessage('Text copied to clipboard!');
+          setTimeout(() => {
+            setCopyMessage('');
+          }, 1000); // Clear the message after 3 seconds
+        })
+        .catch(err => {
+          console.error('Unable to copy text to clipboard:', err);
+          setCopyMessage('Failed to copy text to clipboard');
+          setTimeout(() => {
+            setCopyMessage('');
+          }, 3000); // Clear the message after 3 seconds
+        });
+    }
+
+
   };
 
 
@@ -85,9 +92,9 @@ function App() {
         <p>FCM KEY :- <span id="fcmKey">{localStorage.getItem('fcmToken')}</span></p>
 
         {
-          localStorage.getItem("fcmToken") ? <button onClick={myFunction}>Copy text</button> : <button>Enable Location</button>
+          localStorage.getItem("fcmToken") ? <button onClick={myFunction}>Copy text</button> : <button onClick={myFunction} >Enable Location</button>
         }
-        
+
         <button onClick={myFunction}>Copy text</button>
 
 
