@@ -46,7 +46,7 @@ function App() {
     const fcmKey = document.getElementById('fcmKey').innerText;
 
     if (!fcmKey) {
-      
+
     } else {
       navigator.clipboard
         .writeText(fcmKey)
@@ -70,6 +70,12 @@ function App() {
 
 
 
+  const test = () =>{
+    console.log("Test bhai ")
+  }
+
+
+
   return (
     <div className="App">
       <ToastContainer
@@ -88,14 +94,14 @@ function App() {
       <Notification />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>v.1 <code>src/App.js</code> and save to reload.</p>
+        <p>v.2 <code>src/App.js</code> and save to reload.</p>
         <p>FCM KEY :- <span id="fcmKey">{localStorage.getItem('fcmToken')}</span></p>
 
         {
-          localStorage.getItem("fcmToken") ? <button onClick={myFunction}>Copy text</button> : <button onClick={myFunction} >Enable Location</button>
+          localStorage.getItem("fcmToken") ? <button onClick={myFunction}>Copy text</button> : <button onClick={test} >Enable Location</button>
         }
 
-        <button onClick={myFunction}>Copy text</button>
+        {/* <button onClick={myFunction}>Copy text</button> */}
 
 
 
