@@ -80,26 +80,34 @@
         }).catch(function (err) {
           console.log(err);
         });
-      });
-    } else {
-      console.log('Service Worker is not supported by browser.');
-    }
 
-    if (!('PushManager' in window)) {
-      console.log('No Push API Support!')
-    } else {
-      Notification.requestPermission().then(function (permission) {
-        if (permission !== "granted") {
-          // If permission is not granted, request permission again
+        if (!('PushManager' in window)) {
+          console.log('No Push API Support!')
+        } else {
           Notification.requestPermission().then(function (permission) {
             if (permission === "granted") {
               console.log("Permission granted for Notification..")
+            } else if (permission === "denied") {
+              // If permission is denied, display a message on the screen
+              console.log("Permission denied for Notification...");
+              document.body.insertAdjacentHTML('beforebegin', '<p style="color:red;text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+            } else {
+              // If permission is neither granted nor denied, request permission again
+              Notification.requestPermission().then(function (permission) {
+                if (permission === "granted") {
+                  console.log("Permission granted for Notification..")
+                } else if (permission === "denied") {
+                  // If permission is denied, display a message on the screen
+                  console.log("Permission denied for Notification...");
+                  document.body.insertAdjacentHTML('beforebegin', '<p style="color:red; text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+                }
+              });
             }
           });
-        } else {
-          console.log("Permission granted for Notification..")
         }
       });
+    } else {
+      console.log('Service Worker is not supported by browser.');
     }
 
   </script>
