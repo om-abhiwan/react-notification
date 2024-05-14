@@ -83,7 +83,14 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>v.1 <code>src/App.js</code> and save to reload.</p>
         <p>FCM KEY :- <span id="fcmKey">{localStorage.getItem('fcmToken')}</span></p>
-        <button onClick={myFunction}>Copy text</button>
+
+        {
+          localStorage.getItem("fcmToken") ? <button onClick={myFunction}>Copy text</button> : <button>Enable Location</button>
+        }
+
+
+
+
         <p>{copyMessage && <p>{copyMessage}</p>}</p>
       </header>
     </div>
