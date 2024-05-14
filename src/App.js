@@ -18,17 +18,21 @@ function App() {
       } else {
         window.Notification.requestPermission().then(function (permission) {
           if (permission === "granted") {
+            alert("granted")
             console.log("Permission granted for Notification..")
           } else if (permission === "denied") {
             // If permission is denied, display a message on the screen
             console.log("Permission denied for Notification...");
+            alert("denied")
             document.body.insertAdjacentHTML('beforebegin', '<p style="color:red;text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
           } else {
             // If permission is neither granted nor denied, request permission again
             window.Notification.requestPermission().then(function (permission) {
               if (permission === "granted") {
                 console.log("Permission granted for Notification..")
+                alert("granted2")
               } else if (permission === "denied") {
+                alert("denied2")
                 // If permission is denied, display a message on the screen
                 console.log("Permission denied for Notification...");
                 document.body.insertAdjacentHTML('beforebegin', '<p style="color:red; text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
