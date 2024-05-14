@@ -45,32 +45,30 @@ function App() {
   const myFunction = () => {
     const fcmKey = document.getElementById('fcmKey').innerText;
 
-    if (!fcmKey) {
 
-    } else {
-      navigator.clipboard
-        .writeText(fcmKey)
-        .then(() => {
-          setCopyMessage('Text copied to clipboard!');
-          setTimeout(() => {
-            setCopyMessage('');
-          }, 1000); // Clear the message after 3 seconds
-        })
-        .catch(err => {
-          console.error('Unable to copy text to clipboard:', err);
-          setCopyMessage('Failed to copy text to clipboard');
-          setTimeout(() => {
-            setCopyMessage('');
-          }, 3000); // Clear the message after 3 seconds
-        });
-    }
+    navigator.clipboard
+      .writeText(fcmKey)
+      .then(() => {
+        setCopyMessage('Text copied to clipboard!');
+        setTimeout(() => {
+          setCopyMessage('');
+        }, 1000); // Clear the message after 3 seconds
+      })
+      .catch(err => {
+        console.error('Unable to copy text to clipboard:', err);
+        setCopyMessage('Failed to copy text to clipboard');
+        setTimeout(() => {
+          setCopyMessage('');
+        }, 3000); // Clear the message after 3 seconds
+      });
+
 
 
   };
 
 
 
-  const test = () =>{
+  const test = () => {
     console.log("Test bhai ")
   }
 
