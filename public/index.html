@@ -43,6 +43,39 @@
   <script>
 
 
+
+
+
+    // window.addEventListener('load', function () {
+    //   if (!('Notification' in window)) {
+    //     console.log('No Push API Support!')
+    //   } else {
+    //     Notification.requestPermission().then(function (permission) {
+    //       if (permission === "granted") {
+    //         console.log("Permission granted for Notification..")
+    //       } else if (permission === "denied") {
+    //         // If permission is denied, display a message on the screen
+    //         console.log("Permission denied for Notification...");
+    //         document.body.insertAdjacentHTML('beforebegin', '<p style="color:red;text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+    //       } else {
+    //         // If permission is neither granted nor denied, request permission again
+    //         Notification.requestPermission().then(function (permission) {
+    //           if (permission === "granted") {
+    //             console.log("Permission granted for Notification..")
+    //           } else if (permission === "denied") {
+    //             // If permission is denied, display a message on the screen
+    //             console.log("Permission denied for Notification...");
+    //             document.body.insertAdjacentHTML('beforebegin', '<p style="color:red; text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+    //           }
+    //         });
+    //       }
+    //     });
+    //   }
+    // });
+
+
+
+
     // if ('serviceWorker' in navigator) {
     //   window.addEventListener('load', function () {
     //     navigator.serviceWorker.register('/worker.js').then(function (registration) {
@@ -71,44 +104,60 @@
     //   console.log("permission declined..")
     // }
 
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/worker.js').then(function (registration) {
-          console.log('Worker registration successful', registration.scope);
-        }, function (err) {
-          console.log('Worker registration failed', err);
-        }).catch(function (err) {
-          console.log(err);
-        });
 
-        if (!('PushManager' in window)) {
-          console.log('No Push API Support!')
-        } else {
-          Notification.requestPermission().then(function (permission) {
-            if (permission === "granted") {
-              console.log("Permission granted for Notification..")
-            } else if (permission === "denied") {
-              // If permission is denied, display a message on the screen
-              console.log("Permission denied for Notification...");
-              document.body.insertAdjacentHTML('beforebegin', '<p style="color:red;text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
-            } else {
-              // If permission is neither granted nor denied, request permission again
-              Notification.requestPermission().then(function (permission) {
-                if (permission === "granted") {
-                  console.log("Permission granted for Notification..")
-                } else if (permission === "denied") {
-                  // If permission is denied, display a message on the screen
-                  console.log("Permission denied for Notification...");
-                  document.body.insertAdjacentHTML('beforebegin', '<p style="color:red; text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
-                }
-              });
-            }
-          });
-        }
-      });
-    } else {
-      console.log('Service Worker is not supported by browser.');
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // working perfect
+
+    // if ('serviceWorker' in navigator) {
+    //   window.addEventListener('load', function () {
+    //     navigator.serviceWorker.register('/worker.js').then(function (registration) {
+    //       console.log('Worker registration successful', registration.scope);
+    //     }, function (err) {
+    //       console.log('Worker registration failed', err);
+    //     }).catch(function (err) {
+    //       console.log(err);
+    //     });
+
+        // if (!('PushManager' in window)) {
+        //   console.log('No Push API Support!')
+        // } else {
+        //   Notification.requestPermission().then(function (permission) {
+        //     if (permission === "granted") {
+        //       console.log("Permission granted for Notification..")
+        //     } else if (permission === "denied") {
+        //       // If permission is denied, display a message on the screen
+        //       console.log("Permission denied for Notification...");
+        //       document.body.insertAdjacentHTML('beforebegin', '<p style="color:red;text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+        //     } else {
+        //       // If permission is neither granted nor denied, request permission again
+        //       Notification.requestPermission().then(function (permission) {
+        //         if (permission === "granted") {
+        //           console.log("Permission granted for Notification..")
+        //         } else if (permission === "denied") {
+        //           // If permission is denied, display a message on the screen
+        //           console.log("Permission denied for Notification...");
+        //           document.body.insertAdjacentHTML('beforebegin', '<p style="color:red; text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+        //         }
+        //       });
+        //     }
+        //   });
+        // }
+    //   });
+    // } else {
+    //   console.log('Service Worker is not supported by browser.');
+    // }
 
   </script>
 </body>

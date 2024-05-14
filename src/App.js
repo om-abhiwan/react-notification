@@ -10,6 +10,41 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
+
+  useEffect(() => {
+    window.addEventListener('load', function () {
+      if (!('Notification' in window)) {
+        console.log('No Push API Support!')
+      } else {
+        window.Notification.requestPermission().then(function (permission) {
+          if (permission === "granted") {
+            console.log("Permission granted for Notification..")
+          } else if (permission === "denied") {
+            // If permission is denied, display a message on the screen
+            console.log("Permission denied for Notification...");
+            document.body.insertAdjacentHTML('beforebegin', '<p style="color:red;text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+          } else {
+            // If permission is neither granted nor denied, request permission again
+            window.Notification.requestPermission().then(function (permission) {
+              if (permission === "granted") {
+                console.log("Permission granted for Notification..")
+              } else if (permission === "denied") {
+                // If permission is denied, display a message on the screen
+                console.log("Permission denied for Notification...");
+                document.body.insertAdjacentHTML('beforebegin', '<p style="color:red; text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+              }
+            });
+          }
+        });
+      }
+    });
+  }, []);
+
+
+
+
+
+
   // useEffect(() => {
   //   const intervalId = setInterval(() => {
   //     pushMessage();
@@ -39,6 +74,8 @@ function App() {
         }, 3000); // Clear the message after 3 seconds
       });
   };
+
+
 
 
 
