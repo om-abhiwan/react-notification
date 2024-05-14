@@ -57,7 +57,7 @@ function App() {
             setCopyMessage('');
           }, 1000); // Clear the message after 3 seconds
         }else{
-          setCopyMessage('a');
+          setCopyMessage('   ...  ');
           setTimeout(() => {
             setCopyMessage('');
           }, 1000); // Clear the message after 3 seconds
@@ -114,9 +114,11 @@ function App() {
 
         {/* <button onClick={myFunction}>Copy text</button> */}
 
+        {
+          localStorage.getItem("fcmToken") ? <p>{copyMessage && <p>{copyMessage}</p>}</p> : ""
+        }
 
-
-        <p>{copyMessage && <p>{copyMessage}</p>}</p>
+        
       </header>
     </div>
   );
