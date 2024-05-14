@@ -6,6 +6,8 @@ const Notification = () => {
     const [notification, setNotification] = useState({title: '', body: ''});
     const notify = () => toast(<ToastDisplay/>);
 
+
+
     function ToastDisplay() {
         return (
             <div>
