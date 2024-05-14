@@ -105,7 +105,7 @@ function App() {
       <Notification />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>v.3 <code>src/App.js</code> and save to reload.</p>
+        <p>v.4 <code>src/App.js</code> and save to reload.</p>
         <p>FCM KEY :- <span id="fcmKey">{localStorage.getItem('fcmToken')}</span></p>
 
         {
