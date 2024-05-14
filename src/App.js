@@ -5,8 +5,38 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+
+  const requestNotificationPermission = () => {
+    if ('Notification' in window) {
+      // Check if the browser supports notifications
+      window.Notification.requestPermission().then(function (permission) {
+        if (permission === "granted") {
+          console.log("Permission granted for Notification..")
+        } else if (permission === "denied") {
+          // If permission is denied, display a message on the screen
+          console.log("Permission denied for Notification...");
+          document.body.insertAdjacentHTML('beforebegin', '<p style="color:red;text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+        } else {
+          // If permission is neither granted nor denied, request permission again
+          Notification.requestPermission().then(function (permission) {
+            if (permission === "granted") {
+              console.log("Permission granted for Notification..")
+            } else if (permission === "denied") {
+              // If permission is denied, display a message on the screen
+              console.log("Permission denied for Notification...");
+              document.body.insertAdjacentHTML('beforebegin', '<p style="color:red; text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
+            }
+          });
+        }
+      });
+    } else {
+      console.log('No Push API Support!');
+    }
+  };
+
+
   useEffect(() => {
-    // Request notification permission when the component mounts
     requestNotificationPermission();
   }, []);
 
@@ -31,24 +61,7 @@ function App() {
       });
   };
 
-  const requestNotificationPermission = () => {
-    if ('Notification' in window) {
-      // Check if the browser supports notifications
-      window.Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          console.log('Permission granted for Notification..');
-        } else if (permission === 'denied') {
-          console.log('Permission denied for Notification...');
-          document.body.insertAdjacentHTML(
-            'beforebegin',
-            '<p style="color:red;text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>'
-          );
-        }
-      });
-    } else {
-      console.log('No Push API Support!');
-    }
-  };
+
 
   return (
     <div className="App">
@@ -68,7 +81,7 @@ function App() {
       <Notification />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>v.0 <code>src/App.js</code> and save to reload.</p>
+        <p>v.1 <code>src/App.js</code> and save to reload.</p>
         <p>FCM KEY :- <span id="fcmKey">{localStorage.getItem('fcmToken')}</span></p>
         <button onClick={myFunction}>Copy text</button>
         <p>{copyMessage && <p>{copyMessage}</p>}</p>
