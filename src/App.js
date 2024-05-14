@@ -57,7 +57,10 @@ function App() {
             setCopyMessage('');
           }, 1000); // Clear the message after 3 seconds
         }else{
-          console.log("test")
+          setCopyMessage('');
+          setTimeout(() => {
+            setCopyMessage('');
+          }, 1000); // Clear the message after 3 seconds
         }
 
 
@@ -102,7 +105,7 @@ function App() {
       <Notification />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>v.2 <code>src/App.js</code> and save to reload.</p>
+        <p>v.3 <code>src/App.js</code> and save to reload.</p>
         <p>FCM KEY :- <span id="fcmKey">{localStorage.getItem('fcmToken')}</span></p>
 
         {
