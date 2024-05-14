@@ -101,7 +101,7 @@ function App() {
           localStorage.getItem("fcmToken") ? <button onClick={myFunction}>Copy text</button> : <button onClick={myFunction} >Enable Location</button>
         }
 
-        <button onClick={myFunction}>Copy text</button>
+        {/* <button onClick={myFunction}>Copy text</button> */}
 
 
 
