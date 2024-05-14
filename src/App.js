@@ -19,7 +19,7 @@ function App() {
           document.body.insertAdjacentHTML('beforebegin', '<p style="color:red;text-align:center;">Notification permission denied. Please allow notification permission to use this feature.</p>');
         } else {
           // If permission is neither granted nor denied, request permission again
-          Notification.requestPermission().then(function (permission) {
+          window.Notification.requestPermission().then(function (permission) {
             if (permission === "granted") {
               console.log("Permission granted for Notification..")
             } else if (permission === "denied") {
